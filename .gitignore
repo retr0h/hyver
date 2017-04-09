@@ -1,0 +1,10 @@
+*.egg-info/
+*.py[rcod]
+.cache/
+.eggs/
+.tox/
+doc/build/
+
+# temporary
+
+vms/

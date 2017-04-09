@@ -1,0 +1,38 @@
+---
+kernel: ./vmlinuz
+initrd: ./initrd.img
+cmdline: earlyprintk=serial console=ttyS0
+
+mem: mem-override
+cpus: cpus-override
+
+# CLOUD_CONFIG=${CLOUD_CONFIG:-https://raw.githubusercontent.com/coreos/coreos-xhyve/master/cloud-init/docker-only.txt}
+# UUID=${UUID:-$(uuidgen)} && UUID="-U ${UUID}"
+# [[ -n "${SSHKEY}" ]] && SSHKEY="sshkey=\"${SSHKEY}\""
+
+# PAYLOAD=${CHANNEL}.${VERSION}.coreos_production_pxe
+# VMLINUZ=${PAYLOAD}.vmlinuz
+# INITRD=${PAYLOAD}_image.cpio.gz
+
+# CMDLINE="earlyprintk=serial console=ttyS0 ${SSHKEY} coreos.autologin"
+# CMDLINE="${CMDLINE} cloud-config-url=${CLOUD_CONFIG}"
+
+# MEMORY=${MEMORY:-1024}
+# MEM="-m ${MEMORY}M"
+# CPUS=${CPUS:-1}
+# SMP="-c ${CPUS} -A"
+# NET="-s 2:0,virtio-net"
+# PCI_DEV="-s 0:0,hostbridge -s 31,lpc"
+# LPC_DEV="-l com1,stdio"
+# if [ -n "$ROOT_HDD" ]; then
+#     ROOT="-s 4,virtio-blk,$ROOT_HDD"
+#     if [ -n "$ROOT_LABEL" ]; then
+#         LOC="LABEL=$ROOT_LABEL"
+#     else
+#         LOC="/dev/vda"
+#     fi
+#     CMDLINE="${CMDLINE} root=$LOC rootfstype=ext4"
+# fi
+# EXTRA_ARGS=${EXTRA_ARGS}
+
+# ${XHYVE} $MEM $SMP $PCI_DEV $LPC_DEV $NET $ROOT $UUID $EXTRA_ARGS -f kexec,imgs/$VMLINUZ,imgs/$INITRD,"$CMDLINE"

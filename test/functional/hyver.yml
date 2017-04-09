@@ -1,0 +1,7 @@
+---
+kernel: ./vmlinuz
+initrd: ./initrd.img
+cmdline: earlyprintk=serial console=ttyS0
+
+mem: 1G
+cpus: 2
