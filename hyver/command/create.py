@@ -71,7 +71,9 @@ class Create(object):
             self.bake()
 
         try:
-            util.run_command(self._cmd, debug=self._config.args.get('debug'))
+            with sh.contrib.sudo:
+                util.run_command(
+                    self._cmd, debug=self._config.args.get('debug'))
         except sh.ErrorReturnCode as e:
             util.sysexit(e.exit_code)
 
@@ -88,7 +90,7 @@ class Create(object):
             '-s {}'.format(c.img_hdd),
             '-f kexec,{},{},"{}"'.format(c.kernel, c.initrd, c.cmdline),
         ]
-        return (' '.join([x for x in l if x is not None]))
+        return ([x for x in l if x is not None])
 
 
 @click.command()

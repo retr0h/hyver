@@ -55,11 +55,21 @@ def test_acpi_property(config_instance):
 
 
 def test_kernel_property(config_instance):
-    assert './vmlinuz' == config_instance.kernel
+    assert 'vms/centos7/vmlinuz' == config_instance.kernel
+
+
+def test_kernel_property_raises_since_required(empty_config_instance):
+    with pytest.raises(KeyError):
+        empty_config_instance.kernel
 
 
 def test_initrd_property(config_instance):
-    assert './initrd.img' == config_instance.initrd
+    assert 'vms/centos7/initrd.img' == config_instance.initrd
+
+
+def test_initrd_property_raises_since_required(empty_config_instance):
+    with pytest.raises(KeyError):
+        empty_config_instance.initrd
 
 
 def test_cmdline_property(config_instance):
@@ -86,9 +96,23 @@ def test_net_property(config_instance):
     assert '2:0,virtio-net' == config_instance.net
 
 
+def test_cd_property_raises_since_required(empty_config_instance):
+    with pytest.raises(KeyError):
+        empty_config_instance.cd
+
+
 def test_img_cd_property(config_instance):
     x = '3,ahci-cd,./CentOS-7-x86_64-Minimal-1611.iso'
     assert x == config_instance.img_cd
+
+
+def test_hdd_property_raises_since_required(empty_config_instance):
+    with pytest.raises(KeyError):
+        empty_config_instance.hdd
+
+
+def test_hdd_property(config_instance):
+    assert 'vms/centos7/hdd.img' == config_instance.hdd
 
 
 def test_img_hdd_property(config_instance):

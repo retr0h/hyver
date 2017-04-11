@@ -52,11 +52,11 @@ class Config(object):
 
     @property
     def kernel(self):
-        return self.config.get('kernel')
+        return self.config['kernel']
 
     @property
     def initrd(self):
-        return self.config.get('initrd')
+        return self.config['initrd']
 
     @property
     def cmdline(self):
@@ -75,8 +75,16 @@ class Config(object):
         return '2:0,virtio-net'
 
     @property
+    def cd(self):
+        return self.config['cd']
+
+    @property
     def img_cd(self):
         return '3,ahci-cd,./CentOS-7-x86_64-Minimal-1611.iso'
+
+    @property
+    def hdd(self):
+        return self.config['hdd']
 
     @property
     def img_hdd(self):
@@ -98,8 +106,8 @@ class Config(object):
         try:
             return util.safe_load_file(self.hyver_file)
         except IOError:
-          msg = 'Unable to find {}.  Exiting.'.format(hyver_file())
-          util.sysexit_with_message(msg)
+            msg = 'Unable to find {}.  Exiting.'.format(hyver_file())
+            util.sysexit_with_message(msg)
 
 
 def hyver_file():
