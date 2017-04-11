@@ -116,8 +116,7 @@ def _get_error_handler():
     handler = logging.StreamHandler(sys.stderr)
     handler.setLevel(logging.ERROR)
     handler.addFilter(LogFilter(logging.ERROR))
-    handler.setFormatter(
-        logging.Formatter('{}%(message)s'.format(color)))
+    handler.setFormatter(logging.Formatter('{}%(message)s'.format(color)))
 
     return handler
 

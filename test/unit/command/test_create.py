@@ -62,7 +62,6 @@ def test_bake(create_instance):
     ]
     create_instance.bake()
 
-    print str(create_instance._cmd)
     assert ' '.join(x) == str(create_instance._cmd)
 
 
