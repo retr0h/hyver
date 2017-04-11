@@ -56,9 +56,9 @@ def test_bake(create_instance):
         '-s 0:0,hostbridge -s 31,lpc',
         '-l com1,stdio',
         '-s 2:0,virtio-net',
-        '-s 3,ahci-cd,./CentOS-7-x86_64-Minimal-1611.iso',
-        '-s 4,virtio-blk,./hdd.img',
-        '-f kexec,vms/centos7/vmlinuz,vms/centos7/initrd.img,"earlyprintk=serial console=ttyS0"',
+        '-s 3,ahci-cd,vms/centos7/CentOS-7-x86_64-Minimal-1611.iso',
+        '-s 4,virtio-blk,vms/centos7/hdd.img',
+        '-f kexec,vms/centos7/vmlinuz,vms/centos7/initrd.img,"earlyprintk=serial console=ttyS0"',  # noqa
     ]
     create_instance.bake()
 

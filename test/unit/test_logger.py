@@ -20,9 +20,6 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
-import inspect
-
-import colorama
 import pytest
 
 from hyver import logger
@@ -40,12 +37,14 @@ def test_info(name, capsys):
 
     assert 'foo' in stdout
 
+
 def test_out(name, capsys):
     log = logger.get_logger(name)
     log.out('foo')
     stdout, _ = capsys.readouterr()
 
     assert 'foo' in stdout
+
 
 def test_warn(name, capsys):
     log = logger.get_logger(name)

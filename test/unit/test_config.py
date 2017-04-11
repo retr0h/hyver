@@ -102,7 +102,7 @@ def test_cd_property_raises_since_required(empty_config_instance):
 
 
 def test_img_cd_property(config_instance):
-    x = '3,ahci-cd,./CentOS-7-x86_64-Minimal-1611.iso'
+    x = '3,ahci-cd,vms/centos7/CentOS-7-x86_64-Minimal-1611.iso'
     assert x == config_instance.img_cd
 
 
@@ -116,7 +116,7 @@ def test_hdd_property(config_instance):
 
 
 def test_img_hdd_property(config_instance):
-    assert '4,virtio-blk,./hdd.img' == config_instance.img_hdd
+    assert '4,virtio-blk,vms/centos7/hdd.img' == config_instance.img_hdd
 
 
 # Test that it doesn't change on each call

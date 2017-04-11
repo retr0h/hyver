@@ -80,7 +80,7 @@ class Config(object):
 
     @property
     def img_cd(self):
-        return '3,ahci-cd,./CentOS-7-x86_64-Minimal-1611.iso'
+        return '3,ahci-cd,{}'.format(self.cd)
 
     @property
     def hdd(self):
@@ -88,7 +88,7 @@ class Config(object):
 
     @property
     def img_hdd(self):
-        return '4,virtio-blk,./hdd.img'
+        return '4,virtio-blk,{}'.format(self.hdd)
 
     @property
     def uuid(self):
