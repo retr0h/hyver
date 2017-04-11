@@ -44,6 +44,7 @@ class Create(object):
 
         :return: None
         """
+        #self._cmd = sh.contrib.sudo.xhyve.bake(
         self._cmd = sh.xhyve.bake(
             self._get_cmd(),
             _cwd='../../vms/centos7/',
@@ -81,14 +82,15 @@ class Create(object):
         c = self._config
         l = [
             c.acpi,
-            '-m {}'.format(c.mem),
-            '-c {}'.format(c.cpus),
-            '-s {}'.format(c.pci_dev),
-            '-l {}'.format(c.lpc_dev),
-            '-s {}'.format(c.net),
-            '-s {}'.format(c.img_cd),
-            '-s {}'.format(c.img_hdd),
-            '-f kexec,{},{},"{}"'.format(c.kernel, c.initrd, c.cmdline),
+            '-m', c.mem,
+            '-c', c.cpus,
+            '-s', c.pci_dev,
+            '-s' '31,lpc',
+            '-l', c.lpc_dev,
+            '-s', c.net,
+            '-s', c.img_cd,
+            '-s', c.img_hdd,
+            '-f', 'kexec,{},{},"{}"'.format(c.kernel, c.initrd, c.cmdline),
         ]
         return ([x for x in l if x is not None])
 

@@ -96,7 +96,7 @@ class Config(object):
 
     @property
     def pci_dev(self):
-        return '0:0,hostbridge -s 31,lpc'
+        return '0:0,hostbridge'
 
     @property
     def lpc_dev(self):
