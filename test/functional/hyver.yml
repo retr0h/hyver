@@ -1,8 +1,8 @@
 ---
-kernel: vms/centos7/vmlinuz
-initrd: vms/centos7/initrd.img
-hdd: vms/centos7/hdd.img
-cd: vms/centos7/CentOS-7-x86_64-Minimal-1611.iso
+kernel: ../../vms/centos7/vmlinuz
+initrd: ../../vms/centos7/initrd.img
+hdd: ../../vms/centos7/hdd.img
+cd: ../../vms/centos7/CentOS-7-x86_64-Minimal-1611.iso
 cmdline: earlyprintk=serial console=ttyS0
 
 mem: 1G
