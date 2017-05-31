@@ -4,17 +4,21 @@ hyver
 
 hyver - Manage xhyve instances.
 
-$ mkdir -p vms/centos7 && cd vms/centos7
+http://mirrors.acm.wpi.edu/archlinux/iso/2017.04.01/archlinux-2017.04.01-x86_64.iso
 
-$ wget http://centos.mirror.lstn.net/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso
-$ dd if=/dev/zero bs=2k count=1 of=/tmp/tmp.iso
-$ dd if=CentOS-7-x86_64-Minimal-1611.iso bs=2k skip=1 >> /tmp/tmp.iso
-$ hdiutil attach /tmp/tmp.iso
+iso=archlinux-2017.04.01-x86_64.iso
+dd if=/dev/zero bs=2k count=1 of=tmp.iso
+dd if=$iso bs=2k skip=1 >> tmp.iso
 
-$ cp /Volumes/CentOS\ 7\ x86_64/isolinux/vmlinuz .
-$ cp /Volumes/CentOS\ 7\ x86_64/isolinux/initrd.img .
+diskinfo=$(hdiutil attach tmp.iso)
+disk=$(echo "$diskinfo" |  cut -d' ' -f1)
+mnt=$(echo "$diskinfo" | perl -ne '/(\/Volumes.*)/ and print $1')
 
-$ dd if=/dev/zero of=hdd.img bs=1g count=8
+cp "$mnt/arch/boot/x86_64/vmlinuz" .
+cp "$mnt/arch/boot/x86_64/archiso.img" .
+diskutil eject "$disk"
+
+dd if=/dev/zero of=hdd.img bs=100m count=1
 
 Docs
 ====

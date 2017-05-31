@@ -20,12 +20,15 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 
+import errno
+import os
 import uuid
 
 from hyver import logger
 from hyver import util
 
 HYVER_FILE = 'hyver.yml'
+HYVER_DIR = '~/.gilt'
 LOG = logger.get_logger(__name__)
 
 
@@ -112,3 +115,26 @@ class Config(object):
 
 def hyver_file():
     return HYVER_FILE
+
+
+# test
+def hyver_dir():
+    return os.path.expanduser(HYVER_DIR)
+
+
+def _makedirs(path):
+    """
+    Create a base directory of the provided path and return None.
+
+    :param path: A string containing a path to be deconstructed and basedir
+     created.
+    :return: None
+    """
+    dirname, _ = os.path.split(path)
+    try:
+        os.makedirs(dirname)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST:
+            pass
+        else:
+            raise

@@ -72,9 +72,10 @@ class Create(object):
             self.bake()
 
         try:
-            with sh.contrib.sudo:
-                util.run_command(
-                    self._cmd, debug=self._config.args.get('debug'))
+            print self._cmd
+            #  with sh.contrib.sudo:
+            #      util.run_command(
+            #          self._cmd, debug=self._config.args.get('debug'))
         except sh.ErrorReturnCode as e:
             util.sysexit(e.exit_code)
 
@@ -85,7 +86,7 @@ class Create(object):
             '-m', c.mem,
             '-c', c.cpus,
             '-s', c.pci_dev,
-            '-s' '31,lpc',
+            '-s', '31,lpc',
             '-l', c.lpc_dev,
             '-s', c.net,
             '-s', c.img_cd,

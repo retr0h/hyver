@@ -1,9 +1,9 @@
 ---
-kernel: ../../vms/centos7/vmlinuz
-initrd: ../../vms/centos7/initrd.img
-hdd: ../../vms/centos7/hdd.img
-cd: ../../vms/centos7/CentOS-7-x86_64-Minimal-1611.iso
-cmdline: earlyprintk=serial console=ttyS0
+kernel: /Users/jodewey/.hyver/images/arch/vmlinuz
+initrd: /Users/jodewey/.hyver/images/arch/archiso.img
+hdd: /Users/jodewey/.hyver/images/arch/hdd.img
+cd: /Users/jodewey/.hyver/images/arch/archlinux-2017.04.01-x86_64.iso
+cmdline: earlyprintk=serial console=ttyS0 archisobasedir=arch archisolabel=ARCH_201704
 
 mem: 1G
 cpus: 2
